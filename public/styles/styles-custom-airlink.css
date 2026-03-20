@@ -1,0 +1,113 @@
+:root {
+  --airlink-primary: #1d35ad;
+  --airlink-accent: #4caf50;
+  --airlink-surface: #ffffff;
+  --airlink-text: #1a1a1a;
+}
+
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  background: radial-gradient(circle at center, #ffffff 0%, #f1f4ff 55%, #e7ebff 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  width: 240px;
+  height: 240px;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  border: 1px solid color-mix(in srgb, var(--airlink-primary) 40%, transparent);
+  border-radius: 50%;
+  animation: airlink-signal 6s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes airlink-signal {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(5.5);
+    opacity: 0;
+  }
+}
+
+header,
+footer,
+.panel,
+x-dialog x-paper {
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--airlink-surface) 84%, transparent);
+  border-color: color-mix(in srgb, var(--airlink-primary) 24%, transparent);
+}
+
+.icon-button,
+.btn {
+  border-radius: 12px;
+}
+
+.icon-button:hover,
+.icon-button.selected,
+.btn,
+.badge-room-secret,
+.badge-room-public-id {
+  background: var(--airlink-primary);
+  color: #fff;
+}
+
+.btn {
+  border: 1px solid transparent;
+}
+
+#display-name.badge,
+.badge-room-ip {
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--airlink-primary) 36%, white);
+}
+
+footer .logo {
+  width: 84px;
+  height: 84px;
+  filter: drop-shadow(0 6px 20px rgba(29, 53, 173, 0.35));
+}
+
+footer::after {
+  content: '';
+  width: 160px;
+  height: 44px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, var(--airlink-primary), #5b74ff);
+  border-radius: 999px;
+  opacity: 0.35;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --airlink-surface: #151a2f;
+    --airlink-text: #f5f7ff;
+  }
+
+  body {
+    background: radial-gradient(circle at center, #1b223f 0%, #0f1428 55%, #090d1c 100%);
+    color: var(--airlink-text);
+  }
+
+  header,
+  footer,
+  .panel,
+  x-dialog x-paper {
+    background: color-mix(in srgb, #111733 88%, transparent);
+    border-color: color-mix(in srgb, #7f97ff 28%, transparent);
+  }
+
+  #display-name.badge,
+  .badge-room-ip {
+    border-color: color-mix(in srgb, #8fa3ff 40%, transparent);
+    color: var(--airlink-text);
+  }
+}
